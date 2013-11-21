@@ -1,0 +1,6 @@
+Compile:
+
+./autogen.sh && ./configure && make
+
+Install:
+mkdir -p ~/bin && cp src/2p ~/bin
