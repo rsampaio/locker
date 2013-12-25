@@ -10,7 +10,6 @@ error_check(char * logid, gpgme_error_t err)
 	}
 }
 
-
 void init_gpgme(void)
 {
 	/* init */
@@ -42,10 +41,9 @@ char * encrypt_text(char *buf, const char *key)
 	gpgme_set_textmode (ctx, 1);
 	
 	err = gpgme_get_key(ctx, key, &gkey[0], 0);
-	error_check("key", err);
+	error_check("gpg key", err);
 	
 	err = gpgme_data_new_from_mem(&plain, buf, (size_t) strlen(buf), 0);
-	error_check("data", err);
 
 	err = gpgme_data_new(&cipher);
 	error_check("cipher", err);

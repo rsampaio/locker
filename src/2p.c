@@ -49,7 +49,7 @@ int main(int argc, char **argv)
   pwdent = getpwuid(getuid());
 
   cfg_file = (char *) malloc(strlen(pwdent->pw_dir) + 5);
-  snprintf(cfg_file, strlen(pwdent->pw_dir) + 5, "%s/.2p", pwdent->pw_dir);
+  snprintf(cfg_file, strlen(pwdent->pw_dir) + 9, "%s/.locker", pwdent->pw_dir);
   
   if (cfg_init(cfg_file, &cfg) < 0) {
     fprintf(stderr, "could not open config file\n");
@@ -81,7 +81,7 @@ int main(int argc, char **argv)
       optvalue = optarg;
       db_get(optvalue, db_get_callback);
       break;
-      
+    
     default:
       fprintf(stderr, "Usage:\n\t-s <name>\tSet password\n\t-p <name>\tPrint decrypted password\n\t-a <prefix>\tList all names\n");
     }
